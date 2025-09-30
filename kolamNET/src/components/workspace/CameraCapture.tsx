@@ -89,7 +89,7 @@ const CameraCapture = () => {
               <Camera className="w-6 h-6 mr-3" />
               Camera Feed
             </h3>
-            
+
             <div className="relative rounded-lg overflow-hidden bg-black min-h-[300px] flex items-center justify-center">
               {!stream && !capturedImage && (
                 <button

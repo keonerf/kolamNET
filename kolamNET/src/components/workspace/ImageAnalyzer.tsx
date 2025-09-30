@@ -23,7 +23,7 @@ const ImageAnalyzer = () => {
 
   const analyzePattern = async () => {
     if (!selectedImage) return;
-    
+
     setIsAnalyzing(true);
     try {
       // Use mock Supabase function for analysis
@@ -33,7 +33,7 @@ const ImageAnalyzer = () => {
       });
 
       if (error) throw error;
-      
+
       // Parse the analysis text into structured data for display
       setAnalysisResults({
         symmetry: 'Radial (8-fold)',
@@ -64,7 +64,7 @@ const ImageAnalyzer = () => {
     }
   };
 
-  const generatePatternVariations = (basePattern: any) => {
+  const generatePatternVariations = (_basePattern: any) => {
     // Generate different pattern variations based on analysis
     const variations = [];
     const symmetryTypes = ['radial', 'bilateral', 'rotational', 'translational'];
@@ -110,66 +110,66 @@ const ImageAnalyzer = () => {
         <circle cx="100" cy="100" r="60" fill="none" stroke="${colors[2]}" stroke-width="2"/>
         <circle cx="100" cy="100" r="40" fill="none" stroke="${colors[1]}" stroke-width="3"/>
         <circle cx="100" cy="100" r="20" fill="${colors[0]}"/>
-        ${Array.from({length: 8}, (_, i) => {
-          const angle = (i * 45) * Math.PI / 180;
-          const x1 = 100 + 30 * Math.cos(angle);
-          const y1 = 100 + 30 * Math.sin(angle);
-          const x2 = 100 + 70 * Math.cos(angle);
-          const y2 = 100 + 70 * Math.sin(angle);
-          return `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${colors[2]}" stroke-width="2"/>`;
-        }).join('')}
+        ${Array.from({ length: 8 }, (_, i) => {
+        const angle = (i * 45) * Math.PI / 180;
+        const x1 = 100 + 30 * Math.cos(angle);
+        const y1 = 100 + 30 * Math.sin(angle);
+        const x2 = 100 + 70 * Math.cos(angle);
+        const y2 = 100 + 70 * Math.sin(angle);
+        return `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${colors[2]}" stroke-width="2"/>`;
+      }).join('')}
       </svg>`,
-      
+
       // Geometric pattern with triangles
       `<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
         <polygon points="100,20 180,180 20,180" fill="${colors[0]}" opacity="0.3"/>
         <polygon points="100,40 160,160 40,160" fill="none" stroke="${colors[1]}" stroke-width="2"/>
         <polygon points="100,60 140,140 60,140" fill="none" stroke="${colors[2]}" stroke-width="2"/>
         <polygon points="100,80 120,120 80,120" fill="${colors[1]}"/>
-        ${Array.from({length: 6}, (_, i) => {
-          const angle = (i * 60) * Math.PI / 180;
-          const x = 100 + 40 * Math.cos(angle);
-          const y = 100 + 40 * Math.sin(angle);
-          return `<circle cx="${x}" cy="${y}" r="8" fill="${colors[2]}"/>`;
-        }).join('')}
+        ${Array.from({ length: 6 }, (_, i) => {
+        const angle = (i * 60) * Math.PI / 180;
+        const x = 100 + 40 * Math.cos(angle);
+        const y = 100 + 40 * Math.sin(angle);
+        return `<circle cx="${x}" cy="${y}" r="8" fill="${colors[2]}"/>`;
+      }).join('')}
       </svg>`,
-      
+
       // Mandala-like pattern
       `<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-        ${Array.from({length: 12}, (_, i) => {
-          const angle = (i * 30) * Math.PI / 180;
-          const x = 100 + 60 * Math.cos(angle);
-          const y = 100 + 60 * Math.sin(angle);
-          return `<circle cx="${x}" cy="${y}" r="15" fill="${colors[i % colors.length]}" opacity="0.7"/>`;
-        }).join('')}
+        ${Array.from({ length: 12 }, (_, i) => {
+        const angle = (i * 30) * Math.PI / 180;
+        const x = 100 + 60 * Math.cos(angle);
+        const y = 100 + 60 * Math.sin(angle);
+        return `<circle cx="${x}" cy="${y}" r="15" fill="${colors[i % colors.length]}" opacity="0.7"/>`;
+      }).join('')}
         <circle cx="100" cy="100" r="25" fill="${colors[0]}"/>
         <circle cx="100" cy="100" r="15" fill="${colors[1]}"/>
       </svg>`,
-      
+
       // Grid pattern
       `<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-        ${Array.from({length: 5}, (_, i) => 
-          Array.from({length: 5}, (_, j) => {
-            const x = 20 + i * 40;
-            const y = 20 + j * 40;
-            const colorIndex = (i + j) % colors.length;
-            return `<rect x="${x}" y="${y}" width="30" height="30" fill="${colors[colorIndex]}" opacity="0.8" rx="5"/>`;
-          }).join('')
-        ).join('')}
+        ${Array.from({ length: 5 }, (_, i) =>
+        Array.from({ length: 5 }, (_, j) => {
+          const x = 20 + i * 40;
+          const y = 20 + j * 40;
+          const colorIndex = (i + j) % colors.length;
+          return `<rect x="${x}" y="${y}" width="30" height="30" fill="${colors[colorIndex]}" opacity="0.8" rx="5"/>`;
+        }).join('')
+      ).join('')}
       </svg>`
     ];
-    
+
     return `data:image/svg+xml;base64,${btoa(patterns[patternId % patterns.length])}`;
   };
 
   const regenerateKolam = async () => {
     if (!analysisResults) return;
-    
+
     setIsGenerating(true);
     try {
       // Simulate API delay
       await new Promise(resolve => setTimeout(resolve, 1500));
-      
+
       const variations = generatePatternVariations(analysisResults);
       setGeneratedPatterns(variations);
     } catch (error) {
@@ -195,7 +195,7 @@ const ImageAnalyzer = () => {
               <Upload className="w-6 h-6 mr-3" />
               Upload Image
             </h3>
-            
+
             {!selectedImage ? (
               <div
                 onClick={() => fileInputRef.current?.click()}
@@ -222,7 +222,7 @@ const ImageAnalyzer = () => {
                 </div>
               </div>
             )}
-            
+
             <input
               ref={fileInputRef}
               type="file"
@@ -264,7 +264,7 @@ const ImageAnalyzer = () => {
                 <Sparkles className="w-6 h-6 mr-3" />
                 Analysis Results
               </h3>
-              
+
               <div className="space-y-4">
                 <div className="bg-white/5 rounded-lg p-4">
                   <div className="grid grid-cols-2 gap-4 text-sm">
@@ -341,18 +341,18 @@ const ImageAnalyzer = () => {
                 <RefreshCw className="w-5 h-5 mr-2" />
                 Generated Pattern Variations
               </h3>
-              
+
               <div className="grid grid-cols-2 gap-4">
                 {generatedPatterns.map((pattern) => (
                   <div key={pattern.id} className="bg-white/5 rounded-lg p-4 hover:bg-white/10 transition-all cursor-pointer">
                     <div className="aspect-square mb-3 bg-white/5 rounded-lg overflow-hidden flex items-center justify-center">
-                      <img 
-                        src={pattern.generatedSvg} 
+                      <img
+                        src={pattern.generatedSvg}
                         alt={`Generated pattern ${pattern.id}`}
                         className="w-full h-full object-contain"
                       />
                     </div>
-                    
+
                     <div className="space-y-2 text-sm">
                       <div>
                         <span className="text-purple-300">Symmetry:</span>
@@ -382,7 +382,7 @@ const ImageAnalyzer = () => {
                   </div>
                 ))}
               </div>
-              
+
               <button
                 onClick={regenerateKolam}
                 disabled={isGenerating}

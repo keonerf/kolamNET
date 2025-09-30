@@ -112,7 +112,7 @@ const KolamCanvas = () => {
               <Grid3x3 className="w-6 h-6 mr-3" />
               Controls
             </h3>
-            
+
             <div className="space-y-4">
               <div>
                 <label className="block text-base font-medium text-crayon-orange-200 mb-3 relative z-10">
@@ -137,9 +137,8 @@ const KolamCanvas = () => {
                     <button
                       key={color}
                       onClick={() => setCurrentColor(color)}
-                      className={`w-10 h-10 rounded-lg transition-all shadow-md hover:scale-110 ${
-                        currentColor === color ? "ring-2 ring-white" : ""
-                      }`}
+                      className={`w-10 h-10 rounded-lg transition-all shadow-md hover:scale-110 ${currentColor === color ? "ring-2 ring-white" : ""
+                        }`}
                       style={{ backgroundColor: color }}
                     />
                   ))}
@@ -183,7 +182,7 @@ const KolamCanvas = () => {
                 style={{ touchAction: "none" }}
               />
             </div>
-            
+
             <div className="mt-6 text-center relative z-10">
               <p className="text-crayon-orange-200 text-base">
                 Click and drag to draw lines connecting the dots. Create beautiful kolam patterns!

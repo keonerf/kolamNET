@@ -10,21 +10,21 @@
     background: linear-gradient(135deg, #27272A 0%, rgba(255, 145, 103, 0.1) 50%, rgba(255, 235, 153, 0.1) 100%);
     min-height: 100vh;
   }
-  
+
   /* Custom scrollbar with crayonish colors */
   ::-webkit-scrollbar {
     width: 8px;
   }
-  
+
   ::-webkit-scrollbar-track {
     background: rgba(153, 0, 0, 0.1);
   }
-  
+
   ::-webkit-scrollbar-thumb {
     background: linear-gradient(135deg, #FF7A67, #FF9167);
     border-radius: 4px;
   }
-  
+
   ::-webkit-scrollbar-thumb:hover {
     background: linear-gradient(135deg, #E55A47, #E57147);
   }

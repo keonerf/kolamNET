@@ -134,11 +134,10 @@ const Workspace = () => {
                   <button
                     key={tab.id}
                     onClick={() => setActiveTab(tab.id as ActiveTab)}
-                    className={`px-6 py-3 rounded-2xl text-base font-medium flex items-center space-x-3 transition-all duration-500 shadow-lg hover:shadow-xl hover:scale-105 backdrop-blur-xl border ${
-                      activeTab === tab.id
+                    className={`px-6 py-3 rounded-2xl text-base font-medium flex items-center space-x-3 transition-all duration-500 shadow-lg hover:shadow-xl hover:scale-105 backdrop-blur-xl border ${activeTab === tab.id
                         ? 'bg-gradient-to-r from-crayon-orange-600 to-crayon-red-600 text-white border-white/40'
                         : 'text-crayon-orange-200 hover:text-white hover:bg-white/10 border-white/20 hover:border-white/40'
-                    }`}
+                      }`}
                   >
                     <Icon className="w-4 h-4" />
                     <span>{tab.label}</span>
@@ -178,11 +177,10 @@ const Workspace = () => {
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id as ActiveTab)}
-                className={`flex flex-col items-center justify-center space-y-2 transition-all duration-500 hover:scale-110 ${
-                  activeTab === tab.id
+                className={`flex flex-col items-center justify-center space-y-2 transition-all duration-500 hover:scale-110 ${activeTab === tab.id
                     ? 'text-crayon-orange-400 bg-white/10 rounded-2xl m-2 shadow-lg'
                     : 'text-crayon-orange-200 hover:text-white hover:bg-white/5 rounded-2xl m-2'
-                }`}
+                  }`}
               >
                 <Icon className="w-6 h-6" />
                 <span className="text-sm font-medium">{tab.label}</span>

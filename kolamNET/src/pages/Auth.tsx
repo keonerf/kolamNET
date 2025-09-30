@@ -50,7 +50,7 @@ const Auth = () => {
         <ArrowLeft className="w-4 h-4" />
         Back to Home
       </button>
-      
+
       <div className="max-w-md w-full">
 
         {/* Logo and Title */}
@@ -70,8 +70,8 @@ const Auth = () => {
               {isLogin ? 'Welcome Back' : 'Create Account'}
             </h2>
             <p className="text-crayon-orange-200 text-lg">
-              {isLogin 
-                ? 'Sign in to continue your kolam journey' 
+              {isLogin
+                ? 'Sign in to continue your kolam journey'
                 : 'Join us to explore sacred geometry'
               }
             </p>
